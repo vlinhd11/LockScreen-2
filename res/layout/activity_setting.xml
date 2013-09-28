@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+  xmlns:android="http://schemas.android.com/apk/res/android"
+  android:orientation="vertical"
+  android:layout_width="fill_parent"
+  android:layout_height="fill_parent">
+  <Button
+      android:id="@+id/button_isenabled"
+      android:layout_width="fill_parent"
+      android:layout_height="wrap_content" />
+  <Button
+      android:id="@+id/button_gallery"
+      android:layout_width="fill_parent"
+      android:layout_height="wrap_content"
+      android:text="ギャラリー表示" />
+  <Button
+      android:id="@+id/button_lock_setting"
+      android:layout_width="fill_parent"
+      android:layout_height="wrap_content"
+      android:text="解除時間・画面設定" />
+  <Button
+      android:id="@+id/button_lock_key"
+      android:layout_width="fill_parent"
+      android:layout_height="wrap_content"
+      android:text="解除キー" />
+  <Button
+      android:id="@+id/button_support"
+      android:layout_width="fill_parent"
+      android:layout_height="wrap_content"
+      android:text="サポート" />
+  <Button
+      android:id="@+id/button_lock"
+      android:layout_width="fill_parent"
+      android:layout_height="wrap_content"
+      android:text="デモ" />
+</LinearLayout>

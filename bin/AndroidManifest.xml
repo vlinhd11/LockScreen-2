@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+	package="jp.co.maplesystems.lockscreen"
+	android:versionCode="1"
+	android:versionName="1.0" >
+	<uses-sdk
+		android:minSdkVersion="16"
+		android:targetSdkVersion="16" />
+	<uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW"></uses-permission>
+	<uses-permission android:name="android.permission.DISABLE_KEYGUARD"></uses-permission>
+	<uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED"></uses-permission>
+	<uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+	<!-- アプリケーション設定 -->
+	<application
+		android:allowBackup="true"
+		android:icon="@drawable/ic_launcher"
+		android:label="@string/app_name"
+		android:theme="@style/AppTheme" >
+		<!-- ロック画面登録 -->
+		<activity
+			android:name="jp.co.maplesystems.lockscreen.SettingActivity"
+			android:label="@string/app_name">
+			<intent-filter>
+				<action android:name="android.intent.action.MAIN" />
+				<category android:name="android.intent.category.LAUNCHER" />
+			</intent-filter>
+		</activity>
+		<!-- ロック設定画面レシーバー -->
+		<activity
+			android:name="jp.co.maplesystems.lockscreen.LockSettingActivity"
+			android:label="@string/app_name" >
+		</activity>
+		<!-- ロック画面レシーバー -->
+		<receiver
+			android:name="jp.co.maplesystems.lockscreen.LockReceiver">
+			<intent-filter>
+				<action android:name="android.intent.action.BOOT_COMPLETED"/>
+			</intent-filter>
+		</receiver>
+		<activity
+			android:name="jp.co.maplesystems.lockscreen.LockActivity" />
+		<service
+			android:name="jp.co.maplesystems.lockscreen.StartUpService" />
+		<!-- <service
+		android:name="jp.co.maplesystems.lockscreen.LockService"/>-->
+	</application>
+</manifest>
