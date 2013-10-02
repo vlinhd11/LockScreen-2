@@ -25,7 +25,11 @@
 				<category android:name="android.intent.category.LAUNCHER" />
 			</intent-filter>
 		</activity>
-		<!-- ロック設定画面レシーバー -->
+		<!-- ロック設定画面画面 -->
+		<activity
+			android:name="jp.co.maplesystems.lockscreen.SettingMainActivity"
+			android:label="@string/app_name" >
+		</activity>
 		<activity
 			android:name="jp.co.maplesystems.lockscreen.LockSettingActivity"
 			android:label="@string/app_name" >

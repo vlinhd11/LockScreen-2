@@ -17,83 +17,88 @@ import android.graphics.BitmapFactory;
 import android.os.Bundle;
 import android.os.Environment;
 import android.preference.PreferenceManager;
-import android.util.Log;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
-import android.widget.ImageView;
 
 public class SettingActivity extends Activity implements OnClickListener {
 
 	private static final int REQUEST_GALLERY = 0;
-	private ImageView imgView;
+	//private ImageView imgView;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
+
 		// レイアウトの設定
 		setContentView(R.layout.activity_setting);
 
-		// ボタンクリック時のリスナーを設定
-		findViewById(R.id.button_isenabled).setOnClickListener(this);
-		findViewById(R.id.button_lock).setOnClickListener(this);
-		findViewById(R.id.button_gallery).setOnClickListener(this);
-		findViewById(R.id.button_lock_setting).setOnClickListener(this);
+		// ロック開始(停止)ボタン設定
+		Button buttonIsenabled = (Button)findViewById(R.id.button_isenabled);
+		buttonIsenabled.setOnClickListener(this);
+
+		// 解除時間・画面設定ボタンの設定
+		Button buttonLockSetting = (Button)findViewById(R.id.button_lock_setting);
+		buttonLockSetting.setText(R.string.setting_button_lock_setting);
+		buttonLockSetting.setOnClickListener(this);
+		
+		// 解除キー設定ボタン設定
+		Button buttonLockKey = (Button)findViewById(R.id.button_lock_key);
+		buttonLockKey.setText(R.string.setting_button_lock_key);
+
+		// サポートボタン設定
+		Button buttonSupport = (Button)findViewById(R.id.button_support);
+		buttonSupport.setText(R.string.setting_button_support);
 
 		final Intent intent = new Intent(SettingActivity.this, StartUpService.class);
 
 		// 設定値を反映
 		SharedPreferences sp = PreferenceManager.getDefaultSharedPreferences(this);
-		Button buttonIsenabled = (Button)findViewById(R.id.button_isenabled);
 		if (sp.getBoolean("is_enabled", false)){
 			LockUtil.getInstance().disableKeyguard(this);
 			startService(intent);
-			buttonIsenabled.setText("ロック開始(停止)");
+			buttonIsenabled.setText(R.string.setting_button_isenabled_stop);
 		}else{
 			LockUtil.getInstance().enableKeyguard();
 			stopService(intent);
-			buttonIsenabled.setText("ロック開始");
+			buttonIsenabled.setText(R.string.setting_button_isenabled_start);
 		}
 	}
 
 	@Override
 	public void onClick(View v) {
 		switch ( v.getId() ){
-		case R.id.button_isenabled:
-			final Intent intent = new Intent(SettingActivity.this, StartUpService.class); 
-			// 設定値を反映
-			SharedPreferences sp = PreferenceManager.getDefaultSharedPreferences(this);
-			Button buttonIsenabled = (Button)findViewById(R.id.button_isenabled);
-			Editor e = sp.edit();
-			if (sp.getBoolean("is_enabled", false)){
-				e.putBoolean("is_enabled", false);
-				LockUtil.getInstance().enableKeyguard();
-				stopService(intent);
-				buttonIsenabled.setText("ロック開始");
-			}else{
-				e.putBoolean("is_enabled", true);
-				LockUtil.getInstance().disableKeyguard(this);
-				startService(intent);
-				buttonIsenabled.setText("ロック開始(停止)");
-			}
-			e.commit();
-			break;
-		case R.id.button_lock:
-			// テストボタン押下時、ロック処理を呼ぶ
-			LockUtil.getInstance().lock(getApplicationContext());
-			break;
-		case R.id.button_gallery:
-			// ギャラリー呼び出し
-			Intent gallaryIntent = new Intent(Intent.ACTION_GET_CONTENT);
-			gallaryIntent.setType("image/*");
-			gallaryIntent.setAction(Intent.ACTION_GET_CONTENT);
-			startActivityForResult(gallaryIntent, REQUEST_GALLERY);
-			break;
-		case R.id.button_lock_setting:
-			// ギャラリー呼び出し
-			Intent viewIntent = new Intent(SettingActivity.this, LockSettingActivity.class);
-			startActivity(viewIntent);
-			break;
+			case R.id.button_isenabled:
+				final Intent intent = new Intent(SettingActivity.this, StartUpService.class); 
+				// 設定値を反映
+				SharedPreferences sp = PreferenceManager.getDefaultSharedPreferences(this);
+				Button buttonIsenabled = (Button)findViewById(R.id.button_isenabled);
+				Editor e = sp.edit();
+				if (sp.getBoolean("is_enabled", false)){
+					e.putBoolean("is_enabled", false);
+					LockUtil.getInstance().enableKeyguard();
+					stopService(intent);
+					buttonIsenabled.setText(R.string.setting_button_isenabled_start);
+				}else{
+					e.putBoolean("is_enabled", true);
+					LockUtil.getInstance().disableKeyguard(this);
+					startService(intent);
+					buttonIsenabled.setText(R.string.setting_button_isenabled_stop);
+				}
+				e.commit();
+				break;
+			/*case R.id.button_gallery:
+				// ギャラリー呼び出し
+				Intent gallaryIntent = new Intent(Intent.ACTION_GET_CONTENT);
+				gallaryIntent.setType("image/*");
+				gallaryIntent.setAction(Intent.ACTION_GET_CONTENT);
+				startActivityForResult(gallaryIntent, REQUEST_GALLERY);
+				break;*/
+			case R.id.button_lock_setting:
+				// ギャラリー呼び出し
+				Intent viewIntent = new Intent(SettingActivity.this, SettingMainActivity.class);
+				startActivity(viewIntent);
+				break;
 		}
 	}
 

@@ -5,7 +5,7 @@ import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
 public class CoordinateSqlHelper extends SQLiteOpenHelper {
-	final static private int DB_VERSION = 1;
+	final static private int DB_VERSION = 2;
 	
 	// テーブル作成用SQL
 	private static final String CREATE_TABLE_SQL = 
@@ -21,9 +21,9 @@ public class CoordinateSqlHelper extends SQLiteOpenHelper {
 	;
 	
 	public CoordinateSqlHelper(Context context){
-		super(context, null, null, DB_VERSION);
+		super(context, "Lockscreen", null, DB_VERSION);
 	}
-	
+
 	@Override
 	public void onCreate(SQLiteDatabase db){
 		// table create

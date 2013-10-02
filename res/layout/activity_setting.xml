@@ -9,28 +9,15 @@
       android:layout_width="fill_parent"
       android:layout_height="wrap_content" />
   <Button
-      android:id="@+id/button_gallery"
-      android:layout_width="fill_parent"
-      android:layout_height="wrap_content"
-      android:text="ギャラリー表示" />
-  <Button
       android:id="@+id/button_lock_setting"
       android:layout_width="fill_parent"
-      android:layout_height="wrap_content"
-      android:text="解除時間・画面設定" />
+      android:layout_height="wrap_content" />
   <Button
       android:id="@+id/button_lock_key"
       android:layout_width="fill_parent"
-      android:layout_height="wrap_content"
-      android:text="解除キー" />
+      android:layout_height="wrap_content" />
   <Button
       android:id="@+id/button_support"
       android:layout_width="fill_parent"
-      android:layout_height="wrap_content"
-      android:text="サポート" />
-  <Button
-      android:id="@+id/button_lock"
-      android:layout_width="fill_parent"
-      android:layout_height="wrap_content"
-      android:text="デモ" />
+      android:layout_height="wrap_content" />
 </LinearLayout>

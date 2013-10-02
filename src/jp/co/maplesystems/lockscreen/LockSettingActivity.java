@@ -117,7 +117,7 @@ public class LockSettingActivity extends Activity {
 									Log.v("READ", "x:" + c.getString(0) + " y:" + c.getShort(1) );
 									c.close();
 									// ギャラリー呼び出し
-									Intent viewIntent = new Intent(LockSettingActivity.this, SettingActivity.class);
+									Intent viewIntent = new Intent(LockSettingActivity.this, SettingMainActivity.class);
 									startActivity(viewIntent);
 								}
 							}

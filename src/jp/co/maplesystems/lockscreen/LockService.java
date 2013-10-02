@@ -7,7 +7,7 @@ import android.os.IBinder;
 import android.preference.PreferenceManager;
 
 public class LockService extends Service{
-	private static String TAG = "LockService";
+	//private static String TAG = "LockService";
 
 	@Override
 	public IBinder onBind(Intent intent) {
@@ -16,7 +16,7 @@ public class LockService extends Service{
 
 	@Override
 	public void onStart(Intent intent, int startId) {
-		super.onStart(intent, startId);
+		//super.onStart(intent, startId);
 		if ( intent != null && intent.getAction() != null ){
 
 			// ロック処理呼ぶ

@@ -5,6 +5,7 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
 
+import android.app.Activity;
 import android.app.KeyguardManager;
 import android.content.Context;
 import android.content.SharedPreferences;
@@ -24,7 +25,7 @@ import android.view.WindowManager;
 import android.view.WindowManager.LayoutParams;
 import android.widget.ImageView;
 
-public class LockUtil implements OnTouchListener {
+public class LockUtil extends Activity implements OnTouchListener {
 
 	// シングルトン
 	private static LockUtil instance = new LockUtil();
@@ -117,9 +118,12 @@ public class LockUtil implements OnTouchListener {
 			action = "Touch Cancel";
 			break;
 		}
-		Log.v("Touch", action + " x=" + x + ", y=" + y);
-		/*CoordinateSqlHelper coordinateHelper = new CoordinateSqlHelper(LockActivity.class);
+		Log.v("value", "1");
+		// SQLiteDatabase クラスを使ってデータベースを取得 or 作成する
+		CoordinateSqlHelper coordinateHelper = new CoordinateSqlHelper(this.getApplicationContext());
+		Log.v("value", "2");
 		SQLiteDatabase db = coordinateHelper.getReadableDatabase();
+		Log.v("value", "3");
 		Cursor c = db.query(
 				"unlock_coordinate",
 				new String[] { "x_coordinate", "y_coordinate" },
@@ -130,21 +134,21 @@ public class LockUtil implements OnTouchListener {
 				"id ASC",
 				null
 		);
-		c.moveToFirst();*/
-		/*if((Math.floor(x)-20) <= Integer.valueOf(c.getString(0))
+		c.moveToFirst();
+		if((Math.floor(x)-20) <= Integer.valueOf(c.getString(0))
 				&& Integer.valueOf(c.getString(0)) <= (Math.floor(x)+20)
 				&& (Math.floor(y)-20) <= Integer.valueOf(c.getString(1))
 				&& Integer.valueOf(c.getString(1)) <= (Math.floor(y)+20)
-				){*/
+				){
 			// ロック解除
 			unlock();
 			isLock = true;
-		//}
-		/*c.close();
+		}
+		c.close();
 		Log.v("value", "x:"+Math.floor(x));
 		Log.v("value", "x:"+c.getString(0));
 		Log.v("value", "y:"+Math.floor(y));
-		Log.v("value", "y:"+c.getString(1));*/
+		Log.v("value", "y:"+c.getString(1));
 		return false;
 	}
 
