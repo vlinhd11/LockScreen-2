@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+	<!-- アプリケーションタイトル -->
+	<string name="app_name">ロックスクリーン</string>
+
+	<!-- ロック設定メニュー画面 -->
+	<string name="setting_button_isenabled_start">ロック開始</string>
+	<string name="setting_button_isenabled_stop">ロック停止</string>
+	<string name="setting_button_lock_setting">解除時間・画面設定</string>
+	<string name="setting_button_lock_key">解除キー設定</string>
+	<string name="setting_button_support">サポート</string>
+
+	<!-- ロックメイン画面 -->
+	<string name="setting_main_title_lock_main">解除時間および画像設定</string>
+	<string name="setting_main_button_new">新規作成</string>
+	<string name="setting_main_button_edit">編集</string>
+
+	<!-- ロック設定画面 -->
+	<string name="lock_setting_title_lock_main">解除時間および画像設定</string>
+	<string name="lock_setting_button_new">新規作成</string>
+	<string name="lock_setting_button_edit">編集</string>
+
+	<string name="action_settings">Settings</string>
+	<string name="hello_world">Hello world!</string>
+	<string name="title_activity_lock">LockActivity</string>
+	<string name="dummy_button">Dummy Button</string>
+	<string name="dummy_content">DUMMY\nCONTENT</string>
+</resources>
